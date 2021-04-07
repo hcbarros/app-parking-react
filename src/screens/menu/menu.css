@@ -14,7 +14,7 @@
     margin: 20px;
 }
 
-.menu-app  .menu-text {
+.menu-app .menu-text {
     margin-bottom: 20px;
 }
 
@@ -28,4 +28,23 @@
 
 .menu-text-1 {
     margin-top: 70px;
+}
+
+.menu-img-close {
+    cursor: pointer;
+}
+
+.hide-menu {
+    animation-name: goStart;
+    animation-fill-mode: forwards;
+    animation-duration: 5s;    
+}
+
+@keyframes goStart {
+    from {
+      left: 0;
+    }
+    to {
+      margin-left: 100%;
+    }
 }
