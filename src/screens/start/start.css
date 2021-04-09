@@ -160,28 +160,19 @@
 
 
 
-.show-menu {
-    animation-name: showMenu;
+.show {
+    animation-name: show;
     animation-fill-mode: forwards;
     animation-duration: 1s;    
 }
 
-.hide-menu {
-  animation-name: hideMenu;
+.hide {
+  animation-name: hide;
   animation-fill-mode: forwards;
   animation-duration: 1s;    
 }
 
-@keyframes showMenu {
-    from {
-      margin-left: 100%;   
-    }
-    to {
-      margin-left: 0;
-    }
-}
-
-@keyframes hideMenu {
+@keyframes hide {
   from {
     margin-left: 0;   
   }
@@ -190,32 +181,42 @@
   }
 }
 
-.hide-header {
-    animation-name: hideHeader;
+@keyframes show {
+  from {
+    margin-left: 100%;   
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+
+.show-body {
+  animation-name: showBody;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;    
+}
+
+.hide-body {
+    animation-name: hideBody;
     animation-fill-mode: forwards;
     animation-duration: 1s;    
 }
 
-@keyframes hideHeader {
+@keyframes hideBody {
     from {
-      margin-right: 0;
+      margin-left: 0;
     }
     to {
-      margin-right: 100%;
+      margin-left: -100%;
     }
   }  
 
-.show-header {
-    animation-name: showHeader;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;    
-}
-
-@keyframes showHeader {
+@keyframes showBody {
     from {
-      margin-right: 100%;
+      margin-left: -100%;
     }
     to {
-      margin-right: 0;
+      margin-left: 0;
     }
   }    

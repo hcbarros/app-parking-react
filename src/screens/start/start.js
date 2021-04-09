@@ -20,7 +20,7 @@ export default function Start() {
 
         <div className="blocks">
 
-            <div className={showMenu ? "header hide-header" : "header show-header"}>
+            <div className="header">
               
               <div />
 
@@ -29,7 +29,7 @@ export default function Start() {
 
             </div>
 
-            <div className={showMenu ? "menu show-menu" : "menu hide-menu"}>
+            <div className={showMenu ? "menu show" : "menu hide"}>
 
                 <div className="menu-app">
                     <div />  
@@ -45,9 +45,9 @@ export default function Start() {
         </div>
 
 
-        <div className="start-body">
+        <div className={showMenu ? "start-body hide-body" : "start-body show-body"}>
 
-            <div className="buttons">
+            <div className={showMenu ? "buttons hide-body" : "buttons show-body"}>
                 <button className={entrada ? "in" : "btn-inative"} 
                 onClick={() => {setEntrada(true); setSaida(false)}}> 
                     Entrada
@@ -57,7 +57,7 @@ export default function Start() {
                     Saída
                 </button>
             </div>
-            <div className="input-body">
+            <div className={showMenu ? "input-body hide-body" : "input-body show-body"}>
                   
                 <div>
                   <div className="input-label">Número da placa:</div>
@@ -66,7 +66,6 @@ export default function Start() {
 
             </div>
             
-
         </div>
 
 
