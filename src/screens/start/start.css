@@ -29,7 +29,6 @@
 }
 
 .menu {
-  
   width: 100%;
   height: 100vh;
   background-color: #4DD0E1;
@@ -115,7 +114,7 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  min-height: 280px;
+  height: 275px;
 }
 
 .input-body div:nth-child(1) {
@@ -123,11 +122,9 @@
   margin-top: 20px;
 }
 
-.input-numero {
-  min-width: 280px;
-  width: 70vh;
+.input-numero, .input-body button {
+  width: 500px;
   height: 67px;
-  top: 32px;
   outline: none;
   background: #FFFBE6;
   border: 1px solid #CCCCCC;
@@ -139,7 +136,22 @@
   font-weight: normal;
   font-size: 24px;
   line-height: 33px;
+
+  text-transform: uppercase;
+}
+
+.input-numero::placeholder {
   color: #9B9B9B;
+}
+
+.input-body button {
+  background: #DADADA;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  margin-top: 15px;
+  color: #9B9B9B;
+  cursor: pointer;
 }
 
 .input-label {
@@ -206,17 +218,28 @@
 @keyframes hideBody {
     from {
       margin-left: 0;
+      margin-right: 0;
     }
     to {
-      margin-left: -100%;
+      margin-left: -50%;
+      margin-right: 50%;
     }
   }  
 
 @keyframes showBody {
     from {
-      margin-left: -100%;
+      margin-left: -50%;
+      margin-right: 50%;
     }
     to {
       margin-left: 0;
+      margin-right: 0;
     }
   }    
+
+
+  @media (max-width: 700px) {
+    .input-numero, .input-body button {
+      width: 72vw;
+    }
+  }

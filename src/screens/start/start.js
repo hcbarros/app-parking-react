@@ -1,5 +1,5 @@
 import './start.css';
-import React,{ useState } from 'react';
+import React,{ useState, useRef } from 'react';
 import {Redirect} from 'react-router-dom';
 import logo from '../../images/logo-parking.svg';
 import menu from '../../images/menu.svg';
@@ -11,6 +11,33 @@ export default function Start() {
     const [showMenu, setShowMenu] = useState(false);
     const [entrada, setEntrada] = useState(true);
     const [saida, setSaida] = useState(false);
+    const input = useRef(null);
+    const [stop, setStop] = useState('');
+
+    
+    const buttonSend = (evt) => {
+
+      const char = evt.key.toUpperCase();
+      const code = char.charCodeAt(0);
+
+      let field = input.current.value;
+      const regex = /^[a-zA-Z]$/;
+      const regexNum = /^[\d]$/; 
+      const regexAll = /^[a-zA-Z0-9]$/;                   
+      
+      let isValid = false;
+      if(field.length < 4 && !regex.test(char)) field = field.replace( /[^a-z]$/i, '' );
+
+      else if(field.length === 4 && !regexNum.test(char)) field = field.replace( /[^\d]{4}$/g, '' );
+
+      else if(field.length === 6 && regexAll.test(char)) isValid = true; 
+
+      else if(field.length > 6 && regexNum.test(char)) isValid = true; 
+        
+      
+      input.current.value = field;                        
+    }
+
 
     return (
       <div className="principal">
@@ -61,8 +88,12 @@ export default function Start() {
                   
                 <div>
                   <div className="input-label">Número da placa:</div>
-                  <input className="input-numero" type="text" />
+                  <input className="input-numero" type="text" maxLength="8" ref={input} 
+                  onKeyUp={(evt) => buttonSend(evt)} onKeyDown={(evt) => buttonSend(evt)}
+                  placeholder="AAA-0000" />
                 </div>
+
+                <button>CONFIRMAR ENTRADA</button>
 
             </div>
             
