@@ -122,7 +122,8 @@
   margin-top: 20px;
 }
 
-.input-numero, .input-body button {
+.input-numero, .btn-send-inative, 
+.btn-send-active {
   width: 500px;
   height: 67px;
   outline: none;
@@ -144,7 +145,7 @@
   color: #9B9B9B;
 }
 
-.input-body button {
+.btn-send-inative, .btn-send-active {
   background: #DADADA;
   font-weight: 600;
   font-size: 15px;
@@ -152,6 +153,11 @@
   margin-top: 15px;
   color: #9B9B9B;
   cursor: pointer;
+}
+
+.btn-send-active {
+  background: #28DD91;
+  color: #fff;
 }
 
 .input-label {

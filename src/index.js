@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import './index.css';
-import Start from './screens/start/start';
+import Entrada from './screens/start/entrada';
 import Menu from './screens/menu/menu';
 
 
@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
      <BrowserRouter>
         <Switch>
-            <Route path="/" exact={true} component={Start} />
+            <Route path="/" exact={true} component={Entrada} />
             <Route path="/menu" component={Menu} />
         </Switch>  
      </BrowserRouter>   
