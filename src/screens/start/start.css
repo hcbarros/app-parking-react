@@ -61,130 +61,19 @@
   cursor: pointer;
 }
 
-.start-body {
-  height: calc(100vh - 70px);
-  background-color: #F2F2F2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.buttons {
-  display: flex;
-  background-color: #fff;
-  width: 90%;
-  margin-top: 50px;
-}
-
-.in, .out {
-  width: 50%;
-  height: 50px;
-  border: none;
-  outline: none;
-  background-color: #fff;
-  border-bottom: 3px solid #4DD0E1;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-  color: #4DD0E1;
-  cursor: pointer;
-}
-
-.btn-inative {
-  width: 50%;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  background-color: #F2F2F2;
-  border-bottom: 3px solid #F2F2F2;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-  color: #9B9B9B;
-  cursor: pointer;
-}
-
-.input-body {
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  height: 275px;
-}
-
-.input-body div:nth-child(1) {
-  text-align: left;
-  margin-top: 20px;
-}
-
-.input-numero, .btn-send-inative, 
-.btn-send-active {
-  width: 500px;
-  height: 67px;
-  outline: none;
-  background: #FFFBE6;
-  border: 1px solid #CCCCCC;
-  box-sizing: border-box;
-  border-radius: 4px;
-  text-align: center;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 33px;
-
-  text-transform: uppercase;
-}
-
-.input-numero::placeholder {
-  color: #9B9B9B;
-}
-
-.btn-send-inative, .btn-send-active {
-  background: #DADADA;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 20px;
-  margin-top: 15px;
-  color: #9B9B9B;
-  cursor: pointer;
-}
-
-.btn-send-active {
-  background: #28DD91;
-  color: #fff;
-}
-
-.input-label {
-  text-align: left;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-  color: #9B9B9B;
+.hide {
+  display: none;
 }
 
 
 
-
-
-
-
-
-
-.show {
+.showMenu {
     animation-name: show;
     animation-fill-mode: forwards;
     animation-duration: 1s;    
 }
 
-.hide {
+.hideMenu {
   animation-name: hide;
   animation-fill-mode: forwards;
   animation-duration: 1s;    
@@ -208,44 +97,3 @@
   }
 }
 
-
-.show-body {
-  animation-name: showBody;
-  animation-fill-mode: forwards;
-  animation-duration: 1s;    
-}
-
-.hide-body {
-    animation-name: hideBody;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;    
-}
-
-@keyframes hideBody {
-    from {
-      margin-left: 0;
-      margin-right: 0;
-    }
-    to {
-      margin-left: -50%;
-      margin-right: 50%;
-    }
-  }  
-
-@keyframes showBody {
-    from {
-      margin-left: -50%;
-      margin-right: 50%;
-    }
-    to {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }    
-
-
-  @media (max-width: 700px) {
-    .input-numero, .input-body button {
-      width: 72vw;
-    }
-  }
