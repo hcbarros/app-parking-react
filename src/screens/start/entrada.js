@@ -9,6 +9,7 @@ import StartBody from '../../components/start-body/start-body';
 export default function Entrada() {
 
     const [showMenu, setShowMenu] = useState(false);
+    const [entrada, setEntrada] = useState(true);
 
 
     return (
@@ -36,15 +37,18 @@ export default function Entrada() {
                     className="menu-img-close" alt="button close" />
                 </div>
 
-                <div className="menu-text menu-text-1">Entrada</div>
-                <div className="menu-text">Saída</div>
+                <div onClick={() => {setShowMenu(!showMenu); setEntrada(true);}} 
+                className="menu-text menu-text-1">Entrada</div>
+
+                <div onClick={() => {setShowMenu(!showMenu); setEntrada(false);}} 
+                className="menu-text">Saída</div>
 
             </div>
 
         </div>
 
 
-        <StartBody showMenu={showMenu} />
+        <StartBody showMenu={showMenu} entrada={entrada} />
 
 
       </div>

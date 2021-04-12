@@ -1,5 +1,5 @@
 
-.input-body {
+.input-in, .input-out {
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,12 @@
   height: 275px;
 }
 
-.input-body div:nth-child(1) {
+.input-out {
+  height: 375px;
+}
+
+.input-in div:nth-child(1),
+.input-out div:nth-child(1) {
   text-align: left;
   margin-top: 20px;
 }
@@ -39,7 +44,10 @@
 }
 
 .input-numero, .btn-send-inative, 
-.btn-send-active, .input-erro {
+.btn-in-active, .input-erro,
+.btn-out-inative, .btn-out-active,
+.btn-pay-active {
+
   width: 500px;
   height: 67px;
   outline: none;
@@ -50,7 +58,7 @@
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 24px;
   line-height: 33px;
   text-transform: uppercase;
@@ -64,7 +72,10 @@
   color: #9B9B9B;
 }
 
-.btn-send-inative, .btn-send-active {
+.btn-send-inative, .btn-in-active,
+.btn-out-inative, .btn-out-active,
+.btn-pay-active {
+
   background: #DADADA;
   font-weight: 600;
   font-size: 15px;
@@ -74,7 +85,22 @@
   cursor: pointer;
 }
 
-.btn-send-active {
+.btn-out-inative, .btn-out-active {
+  background-color: #fff;
+  border: 2px solid #DADADA;
+}
+
+.btn-pay-active {
+  background-color: #A769B2;
+  color: #fff;
+}
+
+.btn-out-active {
+  border-color: #A769B2;
+  color: #A769B2;
+}
+
+.btn-in-active {
   background: #28DD91;
   color: #fff;
 }
@@ -89,6 +115,16 @@
   color: #9B9B9B;
 }
 
+.link-historico {
+  margin-top: -50px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #00BCD4;
+  cursor: pointer;
+}
 
 
 
@@ -129,7 +165,10 @@
 
 
   @media (max-width: 700px) {
-    .input-numero, .div-error, .input-body button {
+    .input-numero, .div-error, .input-body button,
+    .btn-pay-active, .btn-out-active, .btn-out-inative,
+    .btn-send-inative {
+      
       width: 72vw;
     }
   }
