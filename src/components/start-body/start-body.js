@@ -25,29 +25,30 @@ export default function StartBody(props) {
 
     return (
 
-        <div className={props.showMenu ? "start-body hide-body" : "start-body show-body"}>
+            <div className={props.showMenu ? "start-body hide-body" : "start-body show-body"}>
 
-            <div className={props.showMenu ? "buttons hide-body" : "buttons show-body"}>
-                <button className={entrada ? "in" : "btn-inative"} 
-                onClick={() => {setEntrada(true); 
-                                setSaida(false); 
-                                setShow(false);}}> 
-                    Entrada
-                </button>
-                <button className={saida ? "out" : "btn-inative"} 
-                onClick={() => {setEntrada(false); 
-                                setSaida(true); 
-                                setShow(false);}}>
-                    Saída
-                </button>
-            </div>
-            
-            {entrada && <InputIn showMenu={props.showMenu} show={show} />}
+                <div className={props.showMenu ? "buttons hide-body" : "buttons show-body"}>
+                    <button className={entrada ? "in" : "btn-inative"} 
+                    onClick={() => {setEntrada(true); 
+                                    setSaida(false); 
+                                    setShow(false);}}> 
+                        Entrada
+                    </button>
+                    <button className={saida ? "out" : "btn-inative"} 
+                    onClick={() => {setEntrada(false); 
+                                    setSaida(true); 
+                                    setShow(false);}}>
+                        Saída
+                    </button>
+                </div>
+                
+                {entrada && <InputIn showMenu={props.showMenu} show={show} />}
 
-            {!entrada && <InputOut showMenu={props.showMenu} show={show} />}
-            
-            {!entrada && <div className="link-historico">VER HISTÓRICO</div>}
-
+                {!entrada && <InputOut showMenu={props.showMenu} show={show} />}
+                
+                {!entrada && <div className={props.showMenu ? "link-historico hide-body" :
+                    show ? "link-historico show-body" : "link-historico"}>VER HISTÓRICO</div>}
+        
         </div>
 
     );
