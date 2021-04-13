@@ -1,6 +1,7 @@
 import './inputs.css';
 import React,{ useState, useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setHistory } from '../../actions/actions';
 import validator from '../validator';
 import Api from '../../api/api';
 import loader from '../../images/ajax-loader-2.gif';
@@ -15,25 +16,39 @@ export default function InputOut(props) {
     const [erro, setErro] = useState(false);
     const input = useRef(null);
     const dispatch = useDispatch();
+    const showMenu = useSelector(state => state.showMenu);
 
 
-    const buttonSend = async () => {
+    const buttonSend = async (bool) => {
 
         setLoading(true);
         setActive(false);    
-        const result = await Api.saveIn(input.current.value);
+        setErro(false);
+        let result = false;
+        if(bool) result = await Api.savePay(input.current.value);
+        else result = await Api.saveOut(input.current.value);
         setLoading(false);                
         if(result) {
             setRegistrado(true);
             input.current.value = "";
         }
-        else setErro(true);
+        else {
+            setErro(true)
+            setActive(true);
+        }
+    }
+
+    const verHistorico = async () => {
+    
+        const history = await Api.getHistory(input.current.value);
+        if(history) {            
+            dispatch(setHistory(history));
+        }
     }
 
     const check = (evt) => {
         setErro(false);
         const bool = validator(evt, input);
-        dispatch({type: 'plate', payload: input.current.value })
         setActive(bool);                    
     }
 
@@ -48,10 +63,10 @@ export default function InputOut(props) {
 
     return (
         
-        <div className={props.showMenu ? "input-out hide-body" : 
+        <div className={showMenu.showMenu ? "input-out hide-body" : 
         props.show ? "input-out show-body" : "input-out"}>
 
-            <div className={loading || registrado ? "hide" : ""}>      
+            <div>      
                 <div>
                     <div className={erro ? "hide" : "input-label"}>Número da placa:</div>
                     <input className={erro ? "input-erro" : "input-numero"} type="text" maxLength="8" ref={input} 
@@ -59,21 +74,20 @@ export default function InputOut(props) {
                     placeholder="AAA-0000" />
                 </div>
 
+                <div className={erro ? "div-error" : "hide"}></div>
+
                 <button className={active ? "btn-pay-active" : "btn-send-inative"}
-                disabled={!active} onClick={() => buttonSend()} >PAGAMENTO</button>
+                disabled={!active} onClick={() => buttonSend(true)} >PAGAMENTO</button>
 
                 <div>
                     <button className={active ? "btn-out-active" : "btn-out-inative"}
-                    disabled={!active} onClick={() => buttonSend()} >SAÍDA</button>
+                    disabled={!active} onClick={() => buttonSend(false)} >SAÍDA</button>
                 </div>
 
             </div>
 
-            <img className={loading ? "loader-in" : "hide"} src={loader} alt="image loader"/>           
-            <a className={loading ? "registrando" : "hide"}>Registrando...</a>    
-
-            <img className={registrado ? "loader-in" : "hide"} src={done} alt="image register"/>           
-            <a className={registrado ? "registrando" : "hide"}>REGISTRADO!</a>     
+            <div className="link-historico" disabled={!active} 
+            onClick={() => verHistorico()}>VER HISTÓRICO</div>            
 
         </div>
             

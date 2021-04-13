@@ -1,55 +1,30 @@
 import './start.css';
-import React,{ useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import logo from '../../images/logo-parking.svg';
-import menu from '../../images/menu.svg';
-import close from '../../images/btn-close.svg';
 import StartBody from '../../components/start-body/start-body';
+import Menu from '../../components/menu/menu';
+import Header from '../../components/header/header';
 
 
 export default function Start() {
 
-    const [showMenu, setShowMenu] = useState(false);
-    const [entrada, setEntrada] = useState(true);
-
+  const showMenu = useSelector(state => state.showMenu);
 
     return (
       <div className="principal">
 
         <img src={logo} className="logo" alt="logo" />
 
-
         <div className="blocks">
 
-            <div className="header">
-              
-              <div />
+            <Header />
 
-              <img src={menu} onClick={() => setShowMenu(!showMenu)}
-              className="header-menu-img" alt="menu" />
-
-            </div>
-
-            <div className={showMenu ? "menu showMenu" : "menu hideMenu"}>
-
-                <div className="menu-app">
-                    <div />  
-                    <img src={close} onClick={() => setShowMenu(!showMenu)}
-                    className="menu-img-close" alt="button close" />
-                </div>
-
-                <div onClick={() => {setShowMenu(!showMenu); setEntrada(true);}} 
-                className="menu-text menu-text-1">Entrada</div>
-
-                <div onClick={() => {setShowMenu(!showMenu); setEntrada(false);}} 
-                className="menu-text">Saída</div>
-
-            </div>
+            <Menu />
 
         </div>
 
-
-        <StartBody showMenu={showMenu} entrada={entrada} />
-
+        <StartBody />
 
       </div>
     );

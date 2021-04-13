@@ -1,26 +1,9 @@
 
 .principal {
-    
-  
 }
 
 .blocks {
   display: flex;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 70px;  
-    background-color: #4DD0E1;
-}
-
-.header-menu-img {
-    width: 35px;    
-    margin-right: 20px;
-    cursor: pointer;
 }
 
 .logo {
@@ -29,75 +12,7 @@
   z-index: 2;
 }
 
-.menu {
-  position: fixed;
-  margin-top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #4DD0E1;
-}
-
-.menu-app {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
-}
-
-.menu-app .menu-text {
-  margin-bottom: 20px;
-}
-
-.menu-text {
-  font: 16px;
-  font-weight: 600;
-  color: #fff;
-  margin-top: 50px;    
-  margin-left: 20px;
-  cursor: pointer;
-}
-
-.menu-text-1 {
-  margin-top: 70px;
-}
-
-.menu-img-close {
-  cursor: pointer;
-}
-
 .hide {
   display: none;
-}
-
-
-
-.showMenu {
-    animation-name: show;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;    
-}
-
-.hideMenu {
-  animation-name: hide;
-  animation-fill-mode: forwards;
-  animation-duration: 1s;    
-}
-
-@keyframes hide {
-  from {
-    margin-left: 0;   
-  }
-  to {
-    margin-left: 100%;
-  }
-}
-
-@keyframes show {
-  from {
-    margin-left: 100%;   
-  }
-  to {
-    margin-left: 0;
-  }
 }
 

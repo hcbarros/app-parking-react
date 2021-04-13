@@ -1,5 +1,6 @@
 import './inputs.css';
 import React,{ useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import validator from '../validator';
 import Api from '../../api/api';
 import loader from '../../images/ajax-loader-2.gif';
@@ -13,18 +14,23 @@ export default function InputIn(props) {
     const [registrado, setRegistrado] = useState(false);
     const [erro, setErro] = useState(false);
     const input = useRef(null);
+    const showMenu = useSelector(state => state.showMenu);
 
     const buttonSend = async () => {
 
         setLoading(true);
         setActive(false);    
+        setErro(false);
         const result = await Api.saveIn(input.current.value);
         setLoading(false);                
         if(result) {
             setRegistrado(true);
             input.current.value = "";
         }
-        else setErro(true);
+        else {
+            setErro(true);
+            setActive(false);
+        }
     }
 
     const check = (evt) => {
@@ -44,7 +50,7 @@ export default function InputIn(props) {
 
     return (
         
-        <div className={props.showMenu ? "input-in hide-body" : 
+        <div className={showMenu.showMenu ? "input-in hide-body" : 
         props.show ? "input-in show-body" : "input-in"}>
 
             <div className={loading || registrado ? "hide" : ""}>      

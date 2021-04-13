@@ -17,12 +17,24 @@ const menu = (state = {menu: true}, action) => {
           { ...state, menu: action.payload } : state;            
 }
 
+const entrada = (state = {entrada: true}, action) => {
+    return action.type == 'entrada' ? 
+          { ...state, entrada: action.payload } : state;            
+}
+
+const history = (state = {history: []}, action) => {
+    return action.type == 'history' ? 
+          { ...state, history: action.payload } : state;            
+}
+
 
 
 const rootReducer = combineReducers({
     plate,
     showMenu,
-    menu
+    menu,
+    entrada,
+    history
 });
 
 
