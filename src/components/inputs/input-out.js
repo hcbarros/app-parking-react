@@ -33,7 +33,7 @@ export default function InputOut(props) {
     const check = (evt) => {
         setErro(false);
         const bool = validator(evt, input);
-        dispatch({type: input.current.value})
+        dispatch({type: 'plate', payload: input.current.value })
         setActive(bool);                    
     }
 

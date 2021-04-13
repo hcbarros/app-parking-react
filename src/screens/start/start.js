@@ -6,7 +6,7 @@ import close from '../../images/btn-close.svg';
 import StartBody from '../../components/start-body/start-body';
 
 
-export default function Entrada() {
+export default function Start() {
 
     const [showMenu, setShowMenu] = useState(false);
     const [entrada, setEntrada] = useState(true);

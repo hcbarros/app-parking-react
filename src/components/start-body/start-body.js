@@ -10,7 +10,7 @@ export default function StartBody(props) {
     const [show, setShow] = useState(true);
     const [entrada, setEntrada] = useState(true);
     const [saida, setSaida] = useState(false);
-    const selector = useSelector(state => state.input);
+    const plate = useSelector(state => state.plate);
 
 
     useEffect(() => {
@@ -46,9 +46,12 @@ export default function StartBody(props) {
 
                 {!entrada && <InputOut showMenu={props.showMenu} show={show} />}
                 
-                {!entrada && <div className={props.showMenu ? "link-historico hide-body" :
-                    show ? "link-historico show-body" : "link-historico"}>VER HISTÓRICO</div>}
-        
+                {/* {!entrada && <div className={props.showMenu ? "link-historico hide-body" :
+                    show ? "link-historico show-body" : "link-historico"}>VER HISTÓRICO</div>} */}
+
+
+                {plate.plate}
+
         </div>
 
     );

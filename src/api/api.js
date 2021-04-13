@@ -52,7 +52,7 @@ export default class Api {
             
             return await axios.get(`https://parking-lot-to-pfz.herokuapp.com/parking/${plate}`)
                   .then(async (resp) => {
-                        return true;
+                        return await resp.data;
                   })
                   .catch(async (err) => {
                         return false;
