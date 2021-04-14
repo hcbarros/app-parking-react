@@ -14,6 +14,9 @@ export default function InputBody(props) {
     const [active, setActive] = useState(false);
     const [loading, setLoading] = useState(false);
     const [registrado, setRegistrado] = useState(false);
+    const [pay, setPay] = useState(false);
+    const [paid, setPaid] = useState(false);
+    const [release, setRelease] = useState(false);
     const [erro, setErro] = useState(false);
     const input = useRef(null);
     const dispatch = useDispatch();
@@ -22,76 +25,95 @@ export default function InputBody(props) {
 
     const buttonSend = async (bool) => {
 
-        setLoading(true);
-        setActive(false);    
         let result = false;
-        $('.principal').append('<div style="position:absolute;width:100%;height:100vh;'+
-        'min-height:670px;opacity:0.51;background:#000;top:0;"></div>')
-     
-        // $('body').css({"background-color": "#000",
-        //                "opacity":"0.51",
-        //                "z-index": "1"
-        //               });
-        // if(bool) {
-        //     $('body').css({"background-color": "#000",
-        //                "opacity":"0.51"
-        //               });
-        //     if(props.in) result = await Api.saveIn(input.current.value);
-        //     else result = await await Api.savePay(input.current.value);        
-        // }
-        // else result = await Api.saveOut(input.current.value);
-        // setLoading(false);                
-        // if(result) {
-        //     setRegistrado(true);
-        //     input.current.value = "";
-        // }
-        // else {
-        //     setErro(true)
-        //     setActive(true);
-        // }
+       
+        if(props.in) {
+            setLoading(true);
+            result = await Api.saveIn(input.current.value);
+        }
+        else {
+            $('.principal').append('<div id="modal" style="position:absolute;width:100%;'+
+            'height:100vh;min-height:670px;opacity:0.51;background:#000;top:0;"></div>');            
+            
+            if(bool) setPay(true);
+            else setRelease(true);    
+            return;                
+        }                
+        getRegister(result);
+    }
+
+    const getRegister = (result) => {
+        setLoading(false);
+        if(result) {
+            setRegistrado(true);
+            setErro(false);
+            input.current.value = "";
+        }
+        else setErro(true);
+        if(props.in || !result) $('#modal').remove();    
+    }
+
+    const btnConfirm = async () => {
+
+        if(pay) setPaid(true);
+        else setPaid(false);
+        setPay(false);
+        setRelease(false);
+        setLoading(true);
+        let result = false;
+        if(pay) result = await Api.savePay(input.current.value);
+        else result = await Api.saveOut(input.current.value);
+        getRegister(result);
+    }
+
+    const btnReturn = () => {
+        setPay(false); 
+        setRelease(false)
+        $('#modal').remove();
     }
 
     const check = (evt) => {
         setErro(false);
         const bool = validator(evt, input);
-        dispatch(setPlate(input.current.value));
         setActive(bool);                    
     }
+
+    const disModal1 = () => {
+        $("body").off( "click", disModal2 );
+    }
+
+    const disModal2 = () => {
+        if(registrado) {
+            setRegistrado(false);
+            setActive(false);
+            $('#modal').remove();
+        }
+    }    
+
+    $("body").on( "click", disModal2 );
+    $("body").on( "click", disModal1 );
+
 
     const verHistorico = async () => {
     
         const len = input.current.value.length;
-        if(len === 8)
-        $('body').css({"background-color": "#000",
-                       "opacity":"0.51"
-                      });
+        if(len === 8) {
 
-        // $('body').click(function() {
-        
-        //    alert()        
-        // });
-
-
-        // const history = await Api.getHistory(input.current.value);
-        // if(history) {            
-        //     dispatch(setHistory(history));
-        // }
+            const history = await Api.getHistory(input.current.value);
+            if(history && history.length > 0) {            
+                dispatch(setHistory(history));
+                
+            }
+            else alert("Placa não encontrada!");
+        }
     }
-
-    useEffect(() => {
-
-          setTimeout(() => {
-            if(registrado) setRegistrado(false);
-          },3000);
-            
-    },[registrado]);
 
 
     return (
 
         <div className="block-inputs">
 
-            <div className={loading || registrado ? "hide" : ""} >      
+            <div className={loading || registrado || pay || release ? "hide" : ""} >      
                 <div>
                     <div className={erro ? "hide" : "input-label"}>Número da placa:</div>
                     <input className={erro ? "input-erro" : "input-numero"} type="text" maxLength="8" ref={input} 
@@ -116,12 +138,24 @@ export default function InputBody(props) {
             </div>          
             
 
-            <div className={loading || registrado ? "alerts" : "hide"}>
+            <div className={loading || registrado || pay || release ? "alerts" : "hide"}>
                 <img className={loading ? "loader-in" : "hide"} src={loader} alt="image loader"/>           
-                <div className={loading ? "registrando" : "hide"}>Registrando...</div>    
+                <div className={loading ? "registrando" : "hide"}>{
+                    props.in ? "Registrando..." : "Confirmando..."}</div>    
 
                 <img className={registrado ? "loader-in" : "hide"} src={done} alt="image register"/>           
-                <a className={registrado ? "registrando" : "hide"}>REGISTRADO!</a>     
+                <a className={registrado ? "registrando" : "hide"}>
+                    {props.in ? "REGISTRADO!" : paid ? "PAGO!" : "SAÍDA LIBERADA!"}</a>     
+
+                <a className={pay || release ? "text-modal" : "hide"}>
+                    {pay ? "Confirma o pagamento da placa abaixo?" : "Confirma a saída do veículo da placa abaixo?"}</a>
+                <a className={pay || release ? "plate-modal" : "hide"}>
+                    {(input.current != null ? input.current.value : "").toUpperCase()}</a>
+                <button className={pay || release ? "btn-pay-active" : "hide"} 
+                    onClick={() => btnConfirm()}>{pay ? "CONFIRMAR" : "LIBERAR SAÍDA"}</button>
+                <div className={pay || release ? "link-historico" : "hide"}
+                    onClick={() => btnReturn()}>VOLTAR</div>       
+
             </div>
 
             <div className={props.in ? "hide" : "link-historico"}
