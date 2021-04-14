@@ -5,11 +5,11 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 275px;
+  height: 300px;
 }
 
 .input-out {
-  height: 375px;
+  height: 390px;
 }
 
 .input-in div:nth-child(1),
@@ -122,13 +122,13 @@
 }
 
 .alerts {
+  position: absolute;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 339px;
   height: 294px;
-  z-index: 2;
-  position: absolute;
   background-color: #fff;
 }
 
@@ -182,11 +182,19 @@
   }    
 
 
-  @media (max-width: 700px) {
-    .input-numero, .div-error, .input-body button,
-    .btn-pay-active, .btn-out-active, .btn-out-inative,
-    .btn-send-inative {
+@media (max-width: 700px) {
+  .input-numero, .div-error, .input-body button,
+  .btn-pay-active, .btn-out-active, .btn-out-inative,
+  .btn-send-inative {
       
-      width: 72vw;
-    }
+    width: 72vw;
   }
+}
+
+@media (max-width: 400px) {
+  .alerts {
+    width: 85%;
+  }
+}
+
+  

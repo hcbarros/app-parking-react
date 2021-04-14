@@ -25,7 +25,9 @@ export default function InputBody(props) {
         setLoading(true);
         setActive(false);    
         let result = false;
-        $('.principal').append('<div style="position:relative;width:100vw;height:100vh;opacity:0.5;background:#000;margin-top:-100vh;"></div>')
+        $('.principal').append('<div style="position:absolute;width:100%;height:100vh;'+
+        'min-height:670px;opacity:0.51;background:#000;top:0;"></div>')
+     
         // $('body').css({"background-color": "#000",
         //                "opacity":"0.51",
         //                "z-index": "1"
