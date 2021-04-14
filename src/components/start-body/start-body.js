@@ -13,7 +13,6 @@ export default function StartBody(props) {
     const dispatch = useDispatch();
     const entrada = useSelector(state => state.entrada);
     const showMenu = useSelector(state => state.showMenu);
-    const plate = useSelector(state => state.plate);
  
     useEffect(() => { setShow(true) },[showMenu.showMenu]);
 
@@ -38,9 +37,6 @@ export default function StartBody(props) {
                 {entrada.entrada && <InputIn show={show} />}
 
                 {!entrada.entrada && <InputOut show={show} />}
-
-
-                {plate.plate}
 
         </div>
 

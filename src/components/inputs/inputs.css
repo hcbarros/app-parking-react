@@ -115,8 +115,26 @@
   color: #9B9B9B;
 }
 
+.block-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alerts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 339px;
+  height: 294px;
+  z-index: 2;
+  position: absolute;
+  background-color: #fff;
+}
+
 .link-historico {
   margin-top: 30px;
+  text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;

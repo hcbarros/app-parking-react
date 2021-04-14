@@ -11,7 +11,7 @@ export default function validator(evt, input) {
              
     if(field.length === 8) return true;
 
-    if(field.charAt(4) == "-") field = field.replace("-","");
+    if(field.charAt(4) === "-") field = field.replace("-","");
 
     if(!regexAll.test(char)) input.current.value = field.replaceAll(char,"");
 
