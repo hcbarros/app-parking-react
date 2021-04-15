@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../header/header';
 import MenuMain from './menu-main';
-import Plates from './plates';
+import Plates from './plates/plates';
 
 
 export default function MenuScreen() {

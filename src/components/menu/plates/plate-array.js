@@ -1,6 +1,5 @@
 
 
-
 export const plateArray = (array) => {
 
     if(Array.isArray(array)) {

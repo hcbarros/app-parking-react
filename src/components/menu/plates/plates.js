@@ -1,10 +1,10 @@
-import './menu.css';
+import '../menu.css';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setShowMenu } from '../../actions/actions';
+import { setShowMenu } from '../../../actions/actions';
 import { plateArray } from './plate-array';
 import PlateStatus from './plate-status';
-import arrow from '../../images/left-arrow.svg';
+import arrow from '../../../images/left-arrow.svg';
 
 
 export default function Plates() {
