@@ -99,13 +99,21 @@ export default function InputBody(props) {
         const len = input.current.value.length;
         if(len === 8) {
 
+            setLoading(true);
+            $('.principal').append('<div id="modal" style="z-index:2;position:absolute;width:100%;'+
+            'height:100vh;min-height:670px;opacity:0.51;background:#000;top:0;"></div>');    
+
             const history = await Api.getHistory(input.current.value);
-            if(history && history.length > 0) {            
+
+            setLoading(false);
+            $('#modal').remove();
+
+            if(history && history.length > 0) {           
                 dispatch(setHistory(history));
                 dispatch(setShowHistory(true));
                 dispatch(setShowMenu(true));
             }
-            else alert("Placa não encontrada!");
+            else setErro(true);
         }
     }
 

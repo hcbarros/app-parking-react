@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setShowHistory } from '../../actions/actions';
 import logo from '../../images/logo-parking.svg';
 import StartBody from '../../components/start-body/start-body';
-import Menu from '../../components/menu/menu';
+import MenuScreen from '../../components/menu/menu-screen';
 import Header from '../../components/header/header';
 
 
@@ -19,7 +19,7 @@ export default function Start() {
 
             <Header />
 
-            <Menu />
+            <MenuScreen />
 
         </div>
 

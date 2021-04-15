@@ -41,17 +41,24 @@
   color: black;
 }
 
+.body-plates {
+  width: calc(100% - 10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .plates {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  width: 90%;
-  margin: 0 auto;
+  width: 540px;
   margin-top: 50px;
+  margin-left: 10px;
   border-radius: 4px;
-  min-height: 300px;
-  padding-bottom: 20px;
+  min-height: 140px;
+  padding: 20px;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -59,8 +66,6 @@
   display: flex;
   align-items: center;
   align-self: flex-start;
-  margin-top: 20px;
-  margin-left: 20px;
 }
 
 .block-arrow div {
@@ -71,21 +76,24 @@
   color: #00BCD4;
 }
 
+.block-arrow img {
+  cursor: pointer;
+}
+
 .data-plate {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 500px;
-  height: 83px;
+  justify-content: space-between;
+  width: 540px;
+  min-height: 83px;
+  height: 10%;
   border-radius: 8px;
   border: 1px solid #E4E3E3;
   box-sizing: border-box;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
-}
-
-.data-plate div:nth-child(1) {
-  margin-right: 80px;
+  padding: 15px 0px 15px 15px;
+  cursor: pointer;
 }
 
 .array-text {
@@ -102,6 +110,32 @@
   line-height: 33px;
   color: #0A261D;
 }
+
+.plate-time, .plate-time + div {
+  margin-left: 3%;
+}
+
+.plate-pay, .plate-pay + div {
+  margin-right: 15%;
+}
+
+.plate-status {
+  margin-top: 30px;
+  align-self: flex-start;
+}
+
+.plate-status div:nth-child(2) {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 52px;
+  color: #00BCD4;
+}
+
+.plate-status div:nth-child(even) {
+  margin-bottom: 20px;
+}
+
 
 
 
@@ -137,3 +171,17 @@
   }
 }
 
+
+@media (max-width: 600px) {
+  .plates {
+    width: 92%;
+  }
+  .data-plate {
+    width: 100%;
+  }
+  .plate-time, .plate-time + div {
+    margin-left: 0;
+  }
+  
+  
+}
