@@ -34,3 +34,10 @@ export const setHistory = (history) => {
         payload: history
     }
 }
+
+export const setShowHistory = (showHistory) => {
+    return {
+        type: 'showHistory',
+        payload: showHistory
+    }
+}

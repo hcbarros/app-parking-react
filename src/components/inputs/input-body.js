@@ -2,7 +2,7 @@ import './inputs.css';
 import React,{ useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import $ from 'jquery'; 
-import { setHistory, setPlate } from '../../actions/actions';
+import { setHistory, setShowHistory, setShowMenu } from '../../actions/actions';
 import validator from '../validator';
 import Api from '../../api/api';
 import loader from '../../images/ajax-loader-2.gif';
@@ -32,7 +32,7 @@ export default function InputBody(props) {
             result = await Api.saveIn(input.current.value);
         }
         else {
-            $('.principal').append('<div id="modal" style="position:absolute;width:100%;'+
+            $('.principal').append('<div id="modal" style="z-index:2;position:absolute;width:100%;'+
             'height:100vh;min-height:670px;opacity:0.51;background:#000;top:0;"></div>');            
             
             if(bool) setPay(true);
@@ -102,7 +102,8 @@ export default function InputBody(props) {
             const history = await Api.getHistory(input.current.value);
             if(history && history.length > 0) {            
                 dispatch(setHistory(history));
-                
+                dispatch(setShowHistory(true));
+                dispatch(setShowMenu(true));
             }
             else alert("Placa não encontrada!");
         }

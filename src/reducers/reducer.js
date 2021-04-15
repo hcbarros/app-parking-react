@@ -27,6 +27,11 @@ const history = (state = {history: []}, action) => {
           { ...state, history: action.payload } : state;            
 }
 
+const showHistory = (state = {showHistory: false}, action) => {
+    return action.type === 'showHistory' ? 
+          { ...state, showHistory: action.payload } : state;            
+}
+
 
 
 const rootReducer = combineReducers({
@@ -34,7 +39,8 @@ const rootReducer = combineReducers({
     showMenu,
     menu,
     entrada,
-    history
+    history,
+    showHistory
 });
 
 

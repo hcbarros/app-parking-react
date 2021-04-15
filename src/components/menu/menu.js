@@ -9,6 +9,7 @@ export default function Menu() {
 
     const dispatch = useDispatch();
     const showMenu = useSelector(state => state.showMenu);
+    const showHistory = useSelector(state => state.showHistory);
 
     const setDispatch = (bool) => {
       dispatch(setShowMenu(false));  
