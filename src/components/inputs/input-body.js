@@ -94,6 +94,11 @@ export default function InputBody(props) {
     $("body").on( "click", disModal1 );
 
 
+    const handlerPaste = (e) => {
+        e.preventDefault();
+    }
+
+
     const verHistorico = async () => {
     
         const len = input.current.value.length;
@@ -127,7 +132,7 @@ export default function InputBody(props) {
                     <div className={erro ? "hide" : "input-label"}>Número da placa:</div>
                     <input className={erro ? "input-erro" : "input-numero"} type="text" maxLength="8" ref={input} 
                     onKeyUp={(evt) => check(evt)} onKeyDown={(evt) => check(evt)}
-                    placeholder="AAA-0000" />
+                    onPaste={(evt) => handlerPaste(evt)} placeholder="AAA-0000" />
                 </div>
 
                 <div className={erro ? "div-error" : "hide"}></div>
