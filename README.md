@@ -1,70 +1,62 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sobre a aplicação  
 
-## Available Scripts
+A aplicação consiste em um app desenvolvido com a biblioteca React para registro e visualização de entradas e saídas
+de veículos de um estacionamento.
 
-In the project directory, you can run:
+### Link para acesso:
+### https://app-parking-react.herokuapp.com/
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Registro de entrada de um novo veículo:
 
-### `yarn test`
+  curl -X POST -d '{"plate": "aaA-4444"}' -H 'Content-type: application/json'
+  https://parking-lot-to-pfz.herokuapp.com/parking
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Registro de pagamento de um veículo:
 
-### `yarn build`
+  curl -X POST https://parking-lot-to-pfz.herokuapp.com/parking/aAa-4444/pay
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Registro de saída de um veículo:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  curl -X POST https://parking-lot-to-pfz.herokuapp.com/parking/AaA-4444/out
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Consultar histórico de um veículo:
 
-### `yarn eject`
+  curl https://parking-lot-to-pfz.herokuapp.com/parking/AaA-4444
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Funcionalidades
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Registrar entrada
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A aplicação contem uma página para registrar a entrada de veículo por placa.
 
-## Learn More
+### Registrar pagamento
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Pode-se realizar o pagamento de tempo de uso do estacionamento. Necessário
+primeiramente informar o número da placa do veículo.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Registrar saída
 
-### Code Splitting
+O registro de saída só pode ser realizado caso o pagamento tenha sido efetuado.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Exibição de histórico por placa
 
-### Analyzing the Bundle Size
+Há uma página para exibição de histórico por placa. Necessário
+primeiramente informar o número da placa que deseja consultar.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Exibição de detalhes de um registro
 
-### Making a Progressive Web App
+Há uma página com detalhes de um registro.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Para executar o app
 
-### Deployment
+### yarn install ou npm install para instalar as dependencias
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### yarn start ou npm start para subir a aplicação
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
