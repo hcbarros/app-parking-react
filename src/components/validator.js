@@ -13,7 +13,7 @@ export default function validator(evt, input) {
 
     if(field.charAt(4) === "-") field = field.replace("-","");
 
-    if(!regexAll.test(char)) input.current.value = field.replaceAll(char,"");
+    if(!regexAll.test(char)) input.current.value = field.replace(char,"");
 
     if(field.length < 4 && !regex.test(char)) field = field.replace( /[^a-z]$/i, '' );
     
