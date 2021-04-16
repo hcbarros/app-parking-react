@@ -1,7 +1,7 @@
 import './menu.css';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setShowMenu, setEntrada } from '../../actions/actions';
+import { setShowMenu, setEntrada, setShowHistory } from '../../actions/actions';
 import close from '../../images/btn-close.svg';
 
 
@@ -11,7 +11,8 @@ export default function MenuMain() {
 
     const setDispatch = (bool) => {
       if(bool != null) dispatch(setEntrada(bool));
-      dispatch(setShowMenu(false));  
+      dispatch(setShowMenu(false));
+      dispatch(setShowHistory(false));  
     }
 
     return (

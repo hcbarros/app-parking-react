@@ -134,7 +134,7 @@
 }
 
 .alerts button {
-  width: 300px;
+  max-width: 300px;
 }
 
 .text-modal {
@@ -207,9 +207,10 @@
 
 
 @media (max-width: 700px) {
-  .input-numero, .div-error, .input-body button,
-  .btn-pay-active, .btn-out-active, .btn-out-inative,
-  .btn-send-inative {
+  .input-numero, .input-erro, .div-error, 
+  .input-body button, .btn-pay-active, 
+  .btn-out-active, .btn-in-active,
+  .btn-out-inative, .btn-send-inative {
       
     width: 72vw;
   }

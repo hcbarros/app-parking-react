@@ -6,7 +6,13 @@
   display: flex;
 }
 
-.logo {
+.logo-absolute {
+  position: absolute;
+  margin: 20px;
+  z-index: 1;
+}
+
+.logo-fixed {
   position: fixed;
   margin: 20px;
   z-index: 1;

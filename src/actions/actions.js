@@ -1,12 +1,5 @@
 
 
-export const setPlate = (plate) => {
-    return {
-        type: 'plate',
-        payload: plate
-    }
-}
-
 export const setShowMenu = (bool) => {
     return {
         type: 'showMenu',

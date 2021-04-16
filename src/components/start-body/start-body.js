@@ -13,13 +13,16 @@ export default function StartBody(props) {
     const dispatch = useDispatch();
     const entrada = useSelector(state => state.entrada);
     const showMenu = useSelector(state => state.showMenu);
- 
+    const showHistory = useSelector(state => state.showHistory);
+
+    const body = showHistory.showHistory ? "start-low-body" : "start-body";
+
     useEffect(() => { setShow(true) },[showMenu.showMenu]);
 
 
     return (
 
-        <div className={showMenu.showMenu ? "start-body hide-body" : "start-body show-body"}>
+        <div className={showMenu.showMenu ? body + " hide-body" : body + " show-body"}>
 
                 <div className={showMenu.showMenu ? "buttons hide-body" : "buttons show-body"}>
                     <button className={entrada.entrada ? "in" : "btn-inative"} 

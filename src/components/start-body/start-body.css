@@ -1,11 +1,15 @@
 
-.start-body {
+.start-body, .start-low-body {
   height: calc(100vh - 70px);
-  min-height: 600px;  
+  min-height: 550px;  
   background-color: #F2F2F2;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.start-low-body {
+  min-height: 0;
 }
 
 .buttons {

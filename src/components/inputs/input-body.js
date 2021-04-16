@@ -33,7 +33,7 @@ export default function InputBody(props) {
         }
         else {
             $('.principal').append('<div id="modal" style="z-index:2;position:absolute;width:100%;'+
-            'height:100vh;min-height:670px;opacity:0.51;background:#000;top:0;"></div>');            
+            'height:100vh;min-height:620px;opacity:0.51;background:#000;top:0;"></div>');            
             
             if(bool) setPay(true);
             else setRelease(true);    
@@ -101,7 +101,7 @@ export default function InputBody(props) {
 
             setLoading(true);
             $('.principal').append('<div id="modal" style="z-index:2;position:absolute;width:100%;'+
-            'height:100vh;min-height:670px;opacity:0.51;background:#000;top:0;"></div>');    
+            'height:100vh;min-height:620px;opacity:0.51;background:#000;top:0;"></div>');    
 
             const history = await Api.getHistory(input.current.value);
 

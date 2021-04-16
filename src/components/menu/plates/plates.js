@@ -1,7 +1,7 @@
 import '../menu.css';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setShowMenu } from '../../../actions/actions';
+import { setShowMenu, setShowHistory } from '../../../actions/actions';
 import { plateArray } from './plate-array';
 import PlateStatus from './plate-status';
 import arrow from '../../../images/left-arrow.svg';
@@ -16,7 +16,10 @@ export default function Plates() {
     const [showPlate, setShowPlate] = useState(false);
 
     const setDispatch = () => {
-      if(!showPlate) dispatch(setShowMenu(false));  
+      if(!showPlate) {
+          dispatch(setShowMenu(false)); 
+          dispatch(setShowHistory(false));  
+      } 
       else setShowPlate(false);
     }
 
